@@ -18,11 +18,12 @@ function loadTasks () {
 
     for (let i = 0; i < tasks.length; ++i) {
       tasksHTML += '<li class="collection-item" style="position:' +
-            'relative" id="' + tasks[i].Title + '"><span class="title">' + tasks[i].Title +
+            'relative"><span class="title">' + tasks[i].Title +
             '</span><span class="title"' + 'style="position: absolute;' +
             'right: 100px; top: 10px">' + tasks[i].Date + '</span><p>' + tasks[i].Description +
             '</p>' + '<a class="btn-floating btn-large waves-effect waves-light' +
-            'red" style="position: absolute; right: 10px; top: 20px"><i class="material-icons">delete</i></a></li>'
+        'red" id=' + tasks[i].Title + ' style="position: absolute; right: 10px;' +
+        ' top: 20px" onClick="deleteTask(this.id)"><i class="material-icons">delete</i></a></li>'
     }
     document.getElementById('tasks').innerHTML = tasksHTML
   })
