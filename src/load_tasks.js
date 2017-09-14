@@ -5,18 +5,20 @@ function httpGet (url, callback) {
       callback(xmlHttp.responseText)
     }
   }
-  xmlHttp.open('GET', url, true) // true for asynchronous 
+  xmlHttp.open('GET', url, true)
   xmlHttp.send(null)
 }
 
+let tasks = null
+
 function loadTasks () {
   httpGet('./tasks.json', function (s) {
-    const tasks = JSON.parse(s).tasks
+    tasks = JSON.parse(s).tasks
     let tasksHTML = ''
 
     for (let i = 0; i < tasks.length; ++i) {
       tasksHTML += '<li class="collection-item" style="position:' +
-            'relative"><span class="title">' + tasks[i].Title +
+            'relative" id="' + tasks[i].Title + '"><span class="title">' + tasks[i].Title +
             '</span><span class="title"' + 'style="position: absolute;' +
             'right: 100px; top: 10px">' + tasks[i].Date + '</span><p>' + tasks[i].Description +
             '</p>' + '<a class="btn-floating btn-large waves-effect waves-light' +

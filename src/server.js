@@ -12,6 +12,16 @@ http.createServer(function (req, res) {
     '.json': 'application/json'
   }
 
+  if (req.method === 'PUT') {
+    let body = []
+    req.on('data', (chunk) => {
+      body.push(chunk)
+    }).on('end', () => {
+      body = Buffer.concat(body).toString()
+      if (body !== '') fs.writeFile('./tasks.json', body, 'utf8', null)
+    })
+  }
+
   fs.exists(pathname, function (exist) {
     if (!exist) {
       res.statusCode = 404
