@@ -6,7 +6,10 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width,
+                                   initial-scale=1.0"/>
+    <!-- load the tasks from json file -->
+    <script src='load_tasks.js'></script>
   </head>
 
   <body>
@@ -34,7 +37,6 @@
         <textarea id="description" class="materialize-textarea"></textarea>
         <label for="textarea1">Description</label>
       </div>
-      <script type="text/javaScript" src="add_task.js"></script>
       <a class="btn-floating btn-large waves-effect waves-light red"
       id="saveButton" onclick="addTask()"><i class="material-icons">add</i></a>
       </div>
@@ -43,7 +45,7 @@
 
         <h3 style="margin-bottom: 1em">Tasks</h3>
         
-        <ul class="collection">
+        <ul class="collection" id="tasks">
           
         </ul>
     
