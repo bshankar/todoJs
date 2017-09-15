@@ -43,7 +43,7 @@ function loadTasks () {
             '</span><span class="title"' + 'style="position: absolute;' +
             'right: 100px; top: 10px">' + tasks[i].Date + '</span><p>' + tasks[i].Description +
             '</p>' + '<a class="btn-floating btn-large waves-effect waves-light' +
-        'red" id=' + tasks[i].Title + ' style="position: absolute; right: 10px;' +
+        'red" id="' + tasks[i].Title + '" style="position: absolute; right: 10px;' +
         ' top: 20px" onClick="deleteTask(this.id)"><i class="material-icons">delete</i></a></li>'
     }
     document.getElementById('tasks').innerHTML = tasksHTML
