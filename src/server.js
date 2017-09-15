@@ -10,13 +10,12 @@ function putJson (req) {
     body.push(chunk)
   }).on('end', () => {
     body = Buffer.concat(body).toString()
-    if (body !== '') fs.writeFile('./tasks.json', body, 'utf8', null)
+    if (body !== '') fs.writeFile('./tasks.json', body, 'utf8')
   })
 }
 
 http.createServer(function (req, res) {
-  const parsedUrl = url.parse(req.url)
-  let pathname = `.${parsedUrl.pathname}`
+  let pathname = '.' + url.parse(req.url).pathname
   const mimeType = {
     '.html': 'text/html',
     '.json': 'application/json'
