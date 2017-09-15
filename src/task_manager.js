@@ -9,7 +9,28 @@ function httpGet (url, callback) {
   xmlHttp.send(null)
 }
 
+function httpPut (url, data) {
+  let xmlHttp = new XMLHttpRequest()
+  xmlHttp.open('PUT', url, true)
+  xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
+  xmlHttp.setRequestHeader('Accept', 'application/json; charset=utf-8')
+  xmlHttp.send(data)
+}
+
 let tasks = null
+
+function getTaskFromInput () {
+  const title = document.getElementById('title').value
+  const date = document.getElementById('date').value
+  const description = document.getElementById('description').value
+  return {'Title': title, 'Date': date, 'Description': description}
+}
+
+function resetInput () {
+  document.getElementById('title').value = ''
+  document.getElementById('date').value = ''
+  document.getElementById('description').value = ''
+}
 
 function loadTasks () {
   httpGet('./tasks.json', function (s) {
@@ -27,6 +48,24 @@ function loadTasks () {
     }
     document.getElementById('tasks').innerHTML = tasksHTML
   })
+}
+
+function addTask () {
+  tasks.unshift(getTaskFromInput())
+  httpPut('./tasks.json', JSON.stringify({'tasks': tasks}))
+  loadTasks()
+  resetInput()
+}
+
+function deleteTask (title) {
+  for (let i = 0; i < tasks.length; ++i) {
+    if (tasks[i].Title === title) {
+      tasks.splice(i, 1)
+      break
+    }
+  }
+  httpPut('./tasks.json', JSON.stringify({'tasks': tasks}))
+  loadTasks()
 }
 
 window.onload = loadTasks
