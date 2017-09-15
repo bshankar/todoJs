@@ -51,10 +51,16 @@ function loadTasks () {
 }
 
 function addTask () {
-  tasks.unshift(getTaskFromInput())
-  httpPut('./tasks.json', JSON.stringify({'tasks': tasks}))
-  loadTasks()
-  resetInput()
+  const task = getTaskFromInput()
+  if (task.Title !== '' && task.Date !== '' && task.Description !== '') {
+    document.getElementById('error').innerHTML = ''
+    tasks.unshift(getTaskFromInput())
+    httpPut('./tasks.json', JSON.stringify({'tasks': tasks}))
+    loadTasks()
+    resetInput()
+  } else {
+    document.getElementById('error').innerHTML = 'Empty or invalid input!'
+  }
 }
 
 function deleteTask (title) {

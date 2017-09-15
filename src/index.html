@@ -25,21 +25,24 @@
         <h3 style="margin-bottom: 2em"> Add new</h3>
         
       <div class="input-field row">
-        <input placeholder="Title" id="title" type="text" class="validate">
+        <input placeholder="Title" id="title" type="text"
+               class="validate" required>
         <label for="Title">Title</label>
       </div>
 
       <div class="input-field row">
-        <input placeholder="29/02/2017" id="date" type="text" class="validate">
+        <input placeholder="29/02/2017" id="date" type="text"
+               class="validate" required>
         <label for="Date">Date</label>
       </div>
 
       <div class="input-field row">
-        <textarea id="description" class="materialize-textarea"></textarea>
+        <textarea id="description" class="materialize-textarea" required></textarea>
         <label for="textarea1">Description</label>
       </div>
       <a class="btn-floating btn-large waves-effect waves-light red"
       id="saveButton" onClick="addTask()"><i class="material-icons">add</i></a>
+      <p style="float: right; color: red" id="error"></p>
       </div>
 
       <div class="col s6">
