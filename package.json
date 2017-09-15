@@ -1,0 +1,24 @@
+{
+  "name": "todojs",
+  "version": "1.0.0",
+  "description": "simple todo app",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bshankar/todoJs.git"
+  },
+  "keywords": [
+    "todo",
+    "app"
+  ],
+  "author": "E Bhavani Shankar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bshankar/todoJs/issues"
+  },
+  "homepage": "https://github.com/bshankar/todoJs#readme"
+}
+    
